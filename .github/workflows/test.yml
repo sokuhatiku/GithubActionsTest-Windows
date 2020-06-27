@@ -22,8 +22,8 @@ jobs:
           path: .\\Library
           key: unity-library-${{ env.UNITY_VERSION }}
 
-      - run: choco install -y unity --version=${{ env.UNITY_VERSION }}
-        shell: cmd
+      - shell: cmd
+        run: choco install -y unity --version=${{ env.UNITY_VERSION }}
 
       - shell: cmd
         env:
