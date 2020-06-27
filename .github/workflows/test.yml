@@ -20,10 +20,20 @@ jobs:
       - run: choco install -y unity --version=${{ env.UNITY_VERSION }}
         shell: cmd
 
-      - run: '"C:\\Program Files\\Unity\\Editor\\Unity.exe" -batchmode -createManualActivationFile -logfile unity-log.log || type unity-log.log || exit 0'
-        shell: cmd
+      - shell: cmd
+        env:
+          UNITY_MAIL: ${{ secrets.UNITY_MAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        run: '"C:\\Program Files\\Unity\\Editor\\Unity.exe" ^
+                -batchmode ^
+                -username "%UNITY_MAIL%" ^
+                -password "%UNITY_PASSWORD%" ^
+                -serial "%UNITY_SERIAL%" ^
+                -executeMethod CI.Builder.Build ^
+                -logfile unity-log.log || type unity-log.log || exit 0'
 
       - uses: actions/upload-artifact@v1
         with:
-          name: licensefile
-          path: 'Unity_v${{ env.UNITY_VERSION }}f1.alf'
+          name: Build.unitypackage
+          path: Build.unitypackage
