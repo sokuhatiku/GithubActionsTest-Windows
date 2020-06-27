@@ -1,0 +1,15 @@
+name: CI-Test
+on: push
+env:
+  PROJECT_ROOT: .
+jobs:
+  testAllModes:
+    name: Run Unity Testing
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+
+      - run: tree .
+        shell: cmd
