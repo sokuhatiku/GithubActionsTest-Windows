@@ -12,8 +12,18 @@ jobs:
         with:
           lfs: true
 
-      - run: choco install unity --version=${{ env.UNITY_VERSION }}
+      - uses: actions/cache@v1
+        with:
+          path: "%LOCALAPPDATA%\Temp\chocolatey"
+          key: choco-unity-${{ env.UNITY_VERSION }}
+
+      - run: choco install -y unity --version=${{ env.UNITY_VERSION }}
         shell: cmd
 
-      - run: echo %path%
+      - run: %PROGRAMFILES%\Unity\Editor\Unity.exe -batchmode -createManualActivationFile -logfile
         shell: cmd
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: licensefile
+          path: *.alf
