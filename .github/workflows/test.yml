@@ -20,7 +20,7 @@ jobs:
       - run: choco install -y unity --version=${{ env.UNITY_VERSION }}
         shell: cmd
 
-      - run: %PROGRAMFILES%/Unity/Editor/Unity.exe -batchmode -createManualActivationFile -logfile
+      - run: "%PROGRAMFILES%/Unity/Editor/Unity.exe -batchmode -createManualActivationFile -logfile"
         shell: cmd
 
       - uses: actions/upload-artifact@v1
