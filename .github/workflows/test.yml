@@ -2,6 +2,7 @@ name: CI-Test
 on: push
 env:
   PROJECT_ROOT: .
+  UNITY_VERSION: 2019.4.1
 jobs:
   testAllModes:
     name: Run Unity Testing
@@ -11,5 +12,8 @@ jobs:
         with:
           lfs: true
 
-      - run: tree .
+      - run: choco install unity --version=${{ env.UNITY_VERSION }}
+        shell: cmd
+
+      - run: echo %path%
         shell: cmd
