@@ -31,4 +31,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: licensefile
-          path: ./*.alf
+          path: 'Unity_v${{ UNITY_VERSION }}f1.alf'
