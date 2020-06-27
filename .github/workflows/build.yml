@@ -4,8 +4,8 @@ env:
   PROJECT_ROOT: .
   UNITY_VERSION: 2019.4.1
 jobs:
-  testAllModes:
-    name: Run Unity Testing
+  build:
+    name: Build
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
