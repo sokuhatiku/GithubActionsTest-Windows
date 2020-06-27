@@ -6,7 +6,10 @@ namespace CI
     {
         public static void Build()
         {
-            AssetDatabase.ExportPackage("Assets/Scenes", "Build.unitypackage");
+            AssetDatabase.ExportPackage(
+                "Assets/Scenes", 
+                "Build.unitypackage", 
+                ExportPackageOptions.Recurse);
         }
     }
 }
