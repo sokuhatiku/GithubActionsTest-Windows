@@ -26,12 +26,13 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
         run: '"C:\\Program Files\\Unity\\Editor\\Unity.exe" ^
-                -batchmode ^
+                -batchmode -quit ^
                 -username "%UNITY_MAIL%" ^
                 -password "%UNITY_PASSWORD%" ^
                 -serial "%UNITY_SERIAL%" ^
+                -projectPath "%PROJECT_ROOT%" ^
                 -executeMethod CI.Builder.Build ^
-                -logfile unity-log.log || type unity-log.log || exit 0'
+                -logfile -'
 
       - uses: actions/upload-artifact@v1
         with:
