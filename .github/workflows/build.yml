@@ -30,8 +30,8 @@ jobs:
           UNITY_USER: ${{ secrets.UNITY_USER }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-        run: >
-          "C:\\Program Files\\Unity\\Editor\\Unity.exe"
+        run: >-
+          \"C:\\Program Files\\Unity\\Editor\\Unity.exe\"
             -batchmode -quit
             -username "%UNITY_USER%"
             -password "%UNITY_PASSWORD%"
