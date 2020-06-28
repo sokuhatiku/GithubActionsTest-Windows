@@ -15,7 +15,7 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: C:\\Users\\runneradmin\\AppData\\Local\\Temp\\chocolatey
-          key: choco-unity-${{ env.UNITY_VERSION }}
+          key: chocolatey
 
       - uses: actions/cache@v1
         with:
