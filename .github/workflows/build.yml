@@ -30,14 +30,15 @@ jobs:
           UNITY_USER: ${{ secrets.UNITY_USER }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-        run: '"C:\\Program Files\\Unity\\Editor\\Unity.exe" ^
-                -batchmode -quit ^
-                -username "%UNITY_USER%" ^
-                -password "%UNITY_PASSWORD%" ^
-                -serial "%UNITY_SERIAL%" ^
-                -projectPath "%PROJECT_ROOT%" ^
-                -executeMethod CI.Builder.Build ^
-                -logfile -'
+        run: >
+          "C:\\Program Files\\Unity\\Editor\\Unity.exe"
+            -batchmode -quit
+            -username "%UNITY_USER%"
+            -password "%UNITY_PASSWORD%"
+            -serial "%UNITY_SERIAL%"
+            -projectPath "%PROJECT_ROOT%"
+            -executeMethod CI.Builder.Build
+            -logfile -
 
       - uses: actions/upload-artifact@v1
         with:
